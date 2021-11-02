@@ -6,7 +6,8 @@ const path = require("path");
 //configuration for multer
 const multerStorage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, path.join(__dirname, "../public/files"));
+    console.log(path.join(process.cwd(), "/public/files"));
+    cb(null, path.join(process.cwd(), "/public/files"));
   },
   filename: (req, file, cb) => {
     const type = file.mimetype.split("/")[1];
