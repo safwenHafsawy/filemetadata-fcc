@@ -21,8 +21,7 @@ const upload = multer({
 route.post("/", upload.single("upfile"), (req, res) => {
   try {
     const { filename, mimetype, size } = req.file;
-    const type = mimetype.split("/")[1];
-    res.status(200).json({ name: filename, type, size });
+    res.status(200).json({ name: filename, type: mimetype, size });
   } catch (err) {
     res.status(400).json({ err });
   }
