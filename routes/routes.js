@@ -20,10 +20,11 @@ const upload = multer({
 
 route.post("/", upload.single("upfile"), (req, res) => {
   try {
-    const { filename, mimetype, size } = req.file;
-    res.status(200).json({ name: filename, type: mimetype, size });
+    console.log(req.file);
+    const { originalname, mimetype, size } = req.file;
+    return res.status(200).json({ name: originalname, type: mimetype, size });
   } catch (err) {
-    res.status(400).json({ err });
+    return res.status(400).json({ err });
   }
 });
 
